@@ -1,0 +1,16 @@
+services:
+  whether-notifications-producer:
+    env_file:
+      - app/.env
+      - app/.env.secure
+    build:
+      context: ../
+      dockerfile: deploy/app/Dockerfile
+    volumes:
+      - ../:/app
+    networks:
+      - outsider
+
+networks:
+  outsider:
+    external: true
